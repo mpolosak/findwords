@@ -1,21 +1,24 @@
 #include"program_options.hpp"
 #include<iostream>
 
-po::options_description createOptionsDescription(std::string &file, int &length)
+using std::string;
+
+po::options_description createOptionsDescription(string &file, int &length, string &regex)
 {
     po::options_description desc("Allowed options");
 
     desc.add_options()
         ("help,h", "show this description and return")
-        ("file", po::value<std::string>(&file)->required(), "get names from file arg")
-        ("length,l", po::value<int>(&length), "length of words");
+        ("file", po::value<string>(&file)->required(), "get names from file arg")
+        ("length,l", po::value<int>(&length)->default_value(0), "length of words, 0 means not to check length")
+        ("regex,r", po::value<string>(&regex)->default_value(".*"), "regular expression to match words");
         ;
     
     return desc;
 }
 
-void loadOptionsFromCommandline(int argc, char *argv[], std::string &file, int &length){
-    auto desc = createOptionsDescription(file, length);
+void loadOptionsFromCommandline(int argc, char *argv[], string &file, int &length, string &regex){
+    auto desc = createOptionsDescription(file, length, regex);
     po::positional_options_description pd;
     pd.add("file", 1);
     po::variables_map vm;
