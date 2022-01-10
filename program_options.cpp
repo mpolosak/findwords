@@ -29,7 +29,7 @@ void loadOptionsFromCommandline(int argc, char *argv[], string &file, int &lengt
     }
     catch(std::logic_error &error)
     {
-        std::cerr<<error.what()<<"\nType in 'findwords -h' to get help"<<std::endl;
+        std::cerr<<error.what()<<"\nType in 'findwords -h' to get help\n";
         std::exit(1);
     }
     if(vm.count("help")){
@@ -38,6 +38,6 @@ void loadOptionsFromCommandline(int argc, char *argv[], string &file, int &lengt
 }
 
 void printHelpAndExit(po::options_description &desc){
-    std::cout<<desc<<std::endl;
+    std::cout<<desc;
     std::exit(0);
 }
