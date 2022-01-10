@@ -7,7 +7,7 @@ using std::cout, std::string;
 
 int main(int argc, char *argv[]){
     string path, regex;
-    int length;
+    unsigned length;
     loadOptionsFromCommandline(argc, argv, path, length, regex);
     return processFile(path, length, regex);
 }

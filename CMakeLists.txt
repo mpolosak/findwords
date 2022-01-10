@@ -6,3 +6,4 @@ find_package(Boost COMPONENTS program_options REQUIRED)
 add_executable(findwords main.cpp program_options.cpp process.cpp)
 
 target_link_libraries(findwords Boost::program_options)
+target_compile_options(findwords PRIVATE -Wall -Wextra)

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int processFile(const string &path, int length, const string &regex){
+int processFile(const string &path, unsigned length, const string &regex){
     fstream file(path);
     if(!file){
         cerr<<"Failed to open file '"<<path<<"'\n";
@@ -15,7 +15,7 @@ int processFile(const string &path, int length, const string &regex){
     try{
         std_regex = std::regex(regex);
     }
-    catch(regex_error error){
+    catch(const regex_error &error){
         cerr<<"Incorrect regex format\n";
         return 1;
     }
