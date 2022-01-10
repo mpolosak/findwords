@@ -1,3 +1,5 @@
+#pragma once
 #include<string>
+#include"program_options.hpp"
 
-int processFile(const std::string &path, unsigned length, const std::string &regex);
+int processFile(const ProgramOptions &options);

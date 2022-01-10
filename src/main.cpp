@@ -6,8 +6,6 @@
 using std::cout, std::string;
 
 int main(int argc, char *argv[]){
-    string path, regex;
-    unsigned length;
-    loadOptionsFromCommandline(argc, argv, path, length, regex);
-    return processFile(path, length, regex);
+    const ProgramOptions options = loadOptionsFromCommandline(argc, argv);
+    return processFile(options);
 }
